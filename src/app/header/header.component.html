@@ -1,0 +1,76 @@
+<header class="p-1 text-bg-dark">
+  <div class="container">
+    <div
+      class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
+    >
+      <a
+        href="/"
+        class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
+      >
+        <img class="image1 fluid d-block" src="assets\img\dev.png" alt="" />
+      </a>
+
+      <ul
+        [hidden]="hidebtn"
+        class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
+      >
+        <li>
+          <a href="JavaScript:Void(0)" class="nav-link px-2 text-white">Home</a>
+        </li>
+        <li>
+          <a href="JavaScript:Void(0)" class="nav-link px-2 text-white"
+            >Courses</a
+          >
+        </li>
+        <li>
+          <a href="JavaScript:Void(0)" class="nav-link px-2 text-white"
+            >About</a
+          >
+        </li>
+      </ul>
+
+      <div class="" [hidden]="Login">
+        <button type="button" class="btn btn-sm btn btn-outline-light">
+          Login
+        </button>
+      </div>
+
+      <div class="hello d-flex  m">
+      <div class="text-end" [hidden]="Logout">
+        <button
+          type="button"
+          class="btn btn-sm btn btn-outline-light me-2"
+          (click)="logout()"
+        >
+          Logout
+        </button>
+      </div>
+
+      <button
+        type="button"
+        class="btn btn-sm btn btn-primary position-relative"
+        (click)="cart()"
+        [hidden]="Cart"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="25"
+          height="25"
+          fill="currentColor"
+          class="bi bi-cart2"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0"
+          />
+        </svg>
+        <span
+          class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+        >
+          0
+        </span>
+      </button>
+    </div>
+    </div>
+  </div>
+</header>

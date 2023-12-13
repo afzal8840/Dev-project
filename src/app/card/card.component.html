@@ -1,0 +1,25 @@
+<h2 class="text-center">Courses</h2>
+
+<div class="container py-1">
+  <div class="row mb-2">
+    <div class="col-md-4" *ngFor="let item of cart">
+      <div class="border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <h3 class="text-center">{{item.title}}</h3>
+          <p class="text-center">{{item.des}}</p>
+        </div>
+        <div class="col-auto d-none d-lg-block text-center ">
+          <img src="{{item.img}}" alt="">
+        </div>
+
+        <div class="text-center">
+          <button class="btn btn-sm btn-success me-2 mb-4 ">Buy</button>
+          <button class="btn btn-sm btn-primary me-2 mb-4">Add</button>
+    
+        </div>
+      </div>
+     
+    </div>
+   
+  </div>
+</div>
