@@ -28,7 +28,6 @@ export class CardComponent  implements OnInit{
   ]
     constructor(){
     }
-  
     ngOnInit(): void{
     }
     addToCart(item: any) {
