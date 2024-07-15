@@ -36,5 +36,4 @@ export class CardComponent  implements OnInit{
       this.shoppingCart.push(item);
     }
   
-
 }
