@@ -1,8 +1,8 @@
 <app-header
 [hideBtn]="true"
-[login]="true"
-[cart]="true"
-[logout]="true"
+[logoutBtn]="true"
+[loginBtn]="true"
+[cartBtn]="true"
 ></app-header>
 <div class="container mb-3 mt-3">
   <div class="row d-flex justify-content-center align-items-center">
@@ -11,88 +11,272 @@
         <div class="row justify-content-center">
           <div class="col-md-10 col-lg-6 col-xl-5">
             <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
-            <form class="mx-md-5">
+            <form [formGroup]="signUp" (ngSubmit)="submit()"
+            class="mx-md-5 text-center">
               <div class="d-flex flex-row align-items-center mb-4">
-                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                <div class="form-outline flex-fill mb-0">
+                <i class="fas fa-user fa-md me-3 fa-fw"></i>
+                <div
+                  class="form-outline flex-fill mb-0"
+                  [ngClass]="{
+                    'has-error':
+                      (signUp.get('firstName').errors &&
+                        signUp.get('firstName').touched) ||
+                      signUp.get('firstName').dirty
+                  }"
+                >
                   <label class="form-label" for="form3Example1c">
                     First Name</label
                   >
-                  <input type="text" id="form3Example1c" class="form-control" />
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="firstName"
+                  />
+                  <span
+                    *ngIf="
+                      signUp.get('firstName').errors &&
+                      (signUp.get('firstName').touched ||
+                        signUp.get('firstName').dirty)
+                    "
+                  >
+                    <span
+                      class="text-danger"
+                      *ngIf="signUp.get('firstName').errors.required"
+                    >
+                      firstName required
+                    </span>
+                    <span
+                      class="text-danger"
+                      *ngIf="signUp.get('firstName').errors.maxlength"
+                    >
+                      firstName name must be 10 character
+                    </span>
+                  </span>
                 </div>
               </div>
 
               <div class="d-flex flex-row align-items-center mb-4">
                 <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                <div class="form-outline flex-fill mb-0">
+                <div
+                  class="form-outline flex-fill mb-0"
+                  [ngClass]="{
+                    'has-error':
+                      (signUp.get('lastName').errors &&
+                        signUp.get('lastName').touched) ||
+                      signUp.get('lastName').dirty
+                  }"
+                >
                   <label class="form-label" for="form3Example3c"
                     >Last Name</label
                   >
-                  <input type="text" id="form3Example3c" class="form-control" />
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="lastName"
+                  />
+                  <span
+                    *ngIf="
+                      signUp.get('lastName').errors &&
+                      (signUp.get('lastName').touched ||
+                        signUp.get('lastName').dirty)
+                    "
+                  >
+                    <span
+                      class="text-danger"
+                      *ngIf="signUp.get('lastName').errors.required"
+                    >
+                      lastName required
+                    </span>
+                    <span
+                      class="text-danger"
+                      *ngIf="signUp.get('lastName').errors.maxlength"
+                    >
+                      lastName name must be 10 character
+                    </span>
+                  </span>
                 </div>
               </div>
 
               <div class="d-flex flex-row align-items-center mb-4">
                 <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                <div class="form-outline flex-fill mb-0">
+                <div
+                  class="form-outline flex-fill mb-0"
+                  [ngClass]="{
+                    'has-error':
+                      (signUp.get('email').errors &&
+                        signUp.get('email').touched) ||
+                      signUp.get('email').dirty
+                  }"
+                >
                   <label class="form-label" for="form3Example3c">Email</label>
                   <input
                     type="email"
-                    id="form3Example3c"
                     class="form-control"
+                    formControlName="email"
                   />
+                  <span
+                    *ngIf="
+                      signUp.get('email').errors &&
+                      (signUp.get('email').touched || signUp.get('email').dirty)
+                    "
+                  >
+                    <span
+                      class="text-danger"
+                      *ngIf="signUp.get('email').errors.required"
+                    >
+                      email required
+                    </span>
+                    <span
+                      class="text-danger"
+                      *ngIf="signUp.get('email').errors.email"
+                    >
+                      email address is invalid
+                    </span>
+                  </span>
                 </div>
               </div>
 
               <div class="d-flex flex-row align-items-center mb-4">
                 <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                <div class="form-outline flex-fill mb-0">
+                <div
+                  class="form-outline flex-fill mb-0"
+                  [ngClass]="{
+                    'has-error':
+                      (signUp.get('password').errors &&
+                        signUp.get('password').touched) ||
+                      signUp.get('password').dirty
+                  }"
+                >
                   <label class="form-label" for="form3Example4c"
                     >Password</label
                   >
                   <input
                     type="password"
-                    id="form3Example4c"
                     class="form-control"
+                    formControlName="password"
                   />
+                  <span
+                    *ngIf="
+                      (signUp.get('password').errors &&
+                        signUp.get('password').touched) ||
+                      signUp.get('password').dirty
+                    "
+                  >
+                    <span
+                      class="text-danger"
+                      *ngIf="signUp.get('password').errors?.required"
+                    >
+                      password required
+                    </span>
+                    <span
+                      class="text-danger"
+                      *ngIf="
+                        signUp.get('password').errors?.minlength ||
+                        signUp.get('password').errors?.maxlength
+                      "
+                    >
+                      password must be greater than 2 character and must be 10
+                      character
+                    </span>
+                  </span>
                 </div>
               </div>
 
               <div class="d-flex flex-row align-items-center mb-4">
                 <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                <div class="form-outline flex-fill mb-0">
-                  <label class="form-label" for="form3Example4c">Contact</label>
+                <div
+                  class="form-outline flex-fill mb-0"
+                  [ngClass]="{
+                    'has-error':
+                      (signUp.get('contact').errors &&
+                        signUp.get('contact').touched) ||
+                      signUp.get('contact').dirty
+                  }"
+                >
+                  <label class="form-label" for="form3Example4c">contact</label>
                   <input
                     type="number"
                     id="form3Example4c"
                     class="form-control"
+                    formControlName="contact"
                   />
+                  <span
+                    class="text-danger"
+                    *ngIf="
+                      (signUp.get('contact').errors &&
+                        signUp.get('contact').touched) ||
+                      signUp.get('contact').dirty
+                    "
+                  >
+                    <span *ngIf="signUp.get('contact').errors?.required"
+                      >Mobile Number is required</span
+                    >
+                    <span *ngIf="signUp.get('contact').errors?.pattern"
+                      >Please, Enter 10 digit Mobile Number</span
+                    >
+                  </span>
                 </div>
               </div>
 
-              <!-- <div class="d-flex flex-row align-items-center mb-4">
+              <div class="d-flex flex-row align-items-center text-centermb-4">
                 <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                 <div class="form-outline flex-fill mb-0">
-                  <label class="form-label" for="form3Example4c">Contact</label>
+                  <label for="male">Male</label>
                   <input
-                    type="number"
-                    id="form3Example4c"
-                    class="form-control"
+                    class="me-2"
+                    type="radio"
+                    name="gender"
+                    value="male"
+                    formControlName="gender"
                   />
-                </div>
-              </div> -->
 
-              <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                  <label for="female">Female</label>
+                  <input
+                    class="me-2"
+                    type="radio"
+                    name="gender"
+                    value="female"
+                    formControlName="gender"
+                  />
+
+                  <label for="Other">Other</label>
+                  <input
+                    class="me-2"
+                    type="radio"
+                    name="gender"
+                    value="Other"
+                    formControlName="gender"
+                  />
+                  <span
+                    class="text-danger"
+                    *ngIf="
+                      signUp.get('gender').touched &&
+                      signUp.get('gender')?.errors
+                    "
+                  >
+                    <span *ngIf="signUp.get('gender')?.errors.required"
+                      >gender is required</span
+                    >
+                  </span>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-center mt-4 mb-3">
                 <button
                   type="button"
-                  class="btn btn-primary btn-lg "
-                  (click)="login()"
+                  class="btn btn-sm btn-primary btn-lg"
+                  (click)="submit()"
                 >
                   Register
                 </button>
               </div>
             </form>
+            <p class="mb-5 pb-lg-2 text-center">
+              Already have an account?
+              <a routerLink="/login">Login</a>
+            </p>
           </div>
+
           <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center">
             <img
               src="https://t4.ftcdn.net/jpg/05/58/06/81/360_F_558068185_sZmfyrWuzHTfzLdwJuj1ALQcBtbKAtbA.jpg"

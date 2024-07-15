@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent  implements OnInit{
+  public shoppingCart: any[] = [];
+
+
   public cart: any[] = [
     {
       title: 'Angular',
@@ -24,11 +27,14 @@ export class CardComponent  implements OnInit{
     }
   ]
     constructor(){
-  
     }
   
     ngOnInit(): void{
   
     }
+    addToCart(item: any) {
+      this.shoppingCart.push(item);
+    }
+  
 
 }

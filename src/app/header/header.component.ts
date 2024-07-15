@@ -4,32 +4,32 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  
-  @Input('hideBtn') hidebtn: boolean = false;
-  @Input('login') Login: boolean = false;
-  @Input('logout') Logout: boolean = false;
-  @Input('cart') Cart: boolean = false;
+  @Input() hideBtn: boolean  ;
+  @Input() loginBtn: boolean  ;
+  @Input() logoutBtn: boolean  ;
+  @Input() cartBtn: boolean  ;
 
+  constructor(private router: Router) {}
 
-
-
-  constructor(private router: Router) { }
-  
-  ngOnInit(): void{}
-
-  // login(){
-  //   this.router.navigate(['/login'])
-  // }
-  logout(){
-    this.router.navigate(['/login'])
-
+  ngOnInit(): void {
+    // console.log(this.hideBtn);
+    // console.log(this.loginBtn);
+    // console.log(this.logoutbtn);
+    // console.log(this.cartbtn);
+    
+  }
+  logout() {
+    this.router.navigate(['/login']);
   }
 
-  cart(){
-    this.router.navigate(['/cart'])
+  // login(){
+  //   this.router.navigate(['/login']);
+  // }
 
+  cart() {
+    this.router.navigate(['/cart']);
   }
 }

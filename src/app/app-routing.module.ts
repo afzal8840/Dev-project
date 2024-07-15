@@ -15,7 +15,6 @@ const routes: Routes = [
   { path: 'signup', component: SignUpComponent},
   { path: 'card', component: CardComponent},
   { path: 'cart', component: CartComponent},
-
   { path: 'footer', component: FooterComponent}
 ];
 

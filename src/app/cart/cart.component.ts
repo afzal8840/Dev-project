@@ -6,6 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent {
+  public shoppingCart: any[] = [];
+
+  constructor(){
+
+  }
+
+  OnInit(): void{
+    const res = localStorage.getItem('shoppingCart');
+
+    if (!res) return;
+
+    this.shoppingCart = JSON.parse(res);
+    console.log(this.shoppingCart);
+  }
+  }
 
 
-}
