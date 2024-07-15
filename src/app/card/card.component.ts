@@ -30,7 +30,6 @@ export class CardComponent  implements OnInit{
     }
   
     ngOnInit(): void{
-  
     }
     addToCart(item: any) {
       this.shoppingCart.push(item);
